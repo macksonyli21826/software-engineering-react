@@ -3,6 +3,19 @@ import {
   deleteUsersByUsername, findAllUsers,
   findUserById
 } from "../services/users-service";
+import mockAxios from "jest-mock-axios";
+
+
+const MOCKED_USERS = [
+  {username: 'ellen_ripley', password: 'lv426', email: 'repley@weyland.com'},
+  {username: 'sarah_conor', password: 'illbeback', email: 'sarah@bigjeff.com'},
+]
+
+afterEach(() => {
+  mockAxios.reset();
+});
+
+
 
 describe('createUser', () => {
   // sample user to insert
