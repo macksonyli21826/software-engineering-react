@@ -3,6 +3,7 @@ import {
   deleteUsersByUsername, findAllUsers,
   findUserById
 } from "../services/users-service";
+import {deleteTuitsByUser} from "../services/tuits-service";
 
 describe('createUser', () => {
   // sample user to insert
@@ -114,23 +115,26 @@ describe('findAllUsers',  () => {
 
   // setup data before test
   beforeAll(() =>
-    // insert several known users
-    usernames.map(username =>
-      createUser({
-        username,
-        password: `${username}123`,
-        email: `${username}@stooges.com`
-      })
-    )
+      // insert several known users
+      usernames.map(username =>
+          createUser({
+            username,
+            password: `${username}123`,
+            email: `${username}@stooges.com`
+          })
+      )
   );
 
   // clean up after ourselves
-  afterAll(() =>
-    // delete the users we inserted
-    usernames.map(username =>
-      deleteUsersByUsername(username)
-    )
+  afterAll(async () =>{
+      // delete the users we inserted
+      await usernames.map(username =>
+          deleteUsersByUsername(username))
+      return deleteUsersByUsername('curley')
+    }
   );
+
+
 
   test('can retrieve all users from REST API', async () => {
     // retrieve all the users
@@ -141,7 +145,7 @@ describe('findAllUsers',  () => {
 
     // let's check each user we inserted
     const usersWeInserted = users.filter(
-      user => usernames.indexOf(user.username) >= 0);
+        user => usernames.indexOf(user.username) >= 0);
 
     // compare the actual users in database with the ones we sent
     usersWeInserted.forEach(user => {

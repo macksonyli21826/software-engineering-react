@@ -1,10 +1,9 @@
-import {UserList} from "../components/profile/userList";
+import {UserList} from "../components/profile/user-list";
 import {screen, render} from "@testing-library/react";
 import {HashRouter} from "react-router-dom";
 import {findAllUsers} from "../services/users-service";
-import axios from "axios";
-
-jest.mock('axios');
+//import axios from "axios";
+//jest.mock('axios');
 
 const MOCKED_USERS = [
   {username: 'ellen_ripley', password: 'lv426', email: 'repley@weyland.com', _id: "123"},
@@ -21,6 +20,7 @@ test('user list renders static user array', () => {
 });
 
 test('user list renders async', async () => {
+
   const users = await findAllUsers();
   render(
     <HashRouter>
@@ -30,7 +30,13 @@ test('user list renders async', async () => {
   expect(linkElement).toBeInTheDocument();
 })
 
+// The test below needs to use mock. However, the tests above
+// does not need mock and cannot use mock. Please see user-list
+//-with-mock.test.js for this test.
+/*
 test('user list renders mocked', async () => {
+
+
   axios.get.mockImplementation(() =>
     Promise.resolve({ data: {users: MOCKED_USERS} }));
   const response = await findAllUsers();
@@ -44,3 +50,4 @@ test('user list renders mocked', async () => {
   const user = screen.getByText(/ellen_ripley/i);
   expect(user).toBeInTheDocument();
 });
+*/
