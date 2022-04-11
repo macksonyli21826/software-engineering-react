@@ -5,10 +5,16 @@ import {useNavigate} from "react-router-dom";
 const Signup = () => {
     const [newUser, setNewUser] = useState({});
     const navigate = useNavigate();
+
+    // new user captures username, password and email
+    // if successful: navigate to profile screen
+    // if not: alert popup, stay here
     const signup = () =>
-        service.register(newUser)
-            .then(() => navigate('/home'))
+        service.signup(newUser)
+            //.then(() => navigate('/home'))
+            .then(()=>navigate('/profile'))
             .catch(e => alert(e));
+
     return (
         <div>
             <h1>Signup</h1>
@@ -29,5 +35,26 @@ const Signup = () => {
             </button>
         </div>
     );
+
+    // Below is the original version
+    /*
+    return (
+        <div>
+            <h1>Signup</h1>
+            <input onChange={(e) =>
+                setNewUser({...newUser,
+                    username: e.target.value})}/>
+            <input onChange={(e) =>
+                setNewUser({...newUser,
+                    password: e.target.value})}/>
+            <input onChange={(e) =>
+                setNewUser({...newUser,
+                    email: e.target.value})}/>
+            <button onClick={signup}>
+                Signup</button>
+        </div>
+    );
+    */
+
 }
 export default Signup;

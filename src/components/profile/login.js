@@ -8,7 +8,9 @@ export const Login = () => {
     const navigate = useNavigate()
     const login = () =>
         service.login(loginUser)
+            // if successful, navigate to profile my tuits screen
             .then((user) => navigate('/profile/mytuits'))
+            // if not successful, error popup
             .catch(e => alert(e));
     return (
         <div>

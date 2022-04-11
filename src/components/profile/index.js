@@ -6,22 +6,29 @@ import TuitsAndReplies from "./tuits-and-replies";
 import Media from "./media";
 import MyLikes from "./my-likes";
 import MyDislikes from "./my-dislikes";
+
+
 const Profile = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [profile, setProfile] = useState({});
-  useEffect(async () => {
+  useEffect(() => {(async () => {
     try {
+      // retrieve currently logged in user
       const user = await service.profile();
+      // set a local profile state variable
       setProfile(user);
     } catch (e) {
       navigate('/login');
     }
-  }, []);
+  })()}, []);
+  // post to logout middlewhere and destroy session
   const logout = () => {
     service.logout()
+        // after session destroy, navigate back to login screen
         .then(() => navigate('/login'));
   }
+  /*
   return(
     <div className="ttr-profile">
       <div className="border border-bottom-0">
@@ -105,5 +112,17 @@ const Profile = () => {
         </Routes>
     </div>
   );
+   */
+  return(
+      // if user exists, then render this as the profile
+      <div>
+        <h4>{profile.username}</h4>
+        <h6>@{profile.username}</h6>
+        <button onClick={logout}>
+          Logout</button>
+      </div>
+  );
+
+
 }
 export default Profile;
