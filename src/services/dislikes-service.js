@@ -1,3 +1,4 @@
+/*
 import axios from "axios";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -19,4 +20,5 @@ export const findAllUsersThatDislikedTuit = (tid) =>
 export const userDislikesTuit = (uid, tid) =>
     api.put(`${USERS_API}/${uid}/dislikes/${tid}`)
         .then(response => response.data);
+ */
 
