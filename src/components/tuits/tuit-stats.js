@@ -1,6 +1,7 @@
-import React from "react";
+// seems like likeTuit(tuit) is not working because nothing happens except alert
 
-const TuitStats = ({tuit, likeTuit = () => {}}) => {
+import React from "react";
+const TuitStats = ({tuit, likeTuit = () => {}}) => { // render stats row at bottom of tuit
     return (
       <div className="row mt-2">
         <div className="col">
@@ -18,11 +19,13 @@ const TuitStats = ({tuit, likeTuit = () => {}}) => {
         <div className="col">
           <span className="ttr-like-tuit-click" onClick={() => likeTuit(tuit)}>
               {
-                tuit.stats && tuit.stats.likes && tuit.stats.likes > 0 &&
+                  // callback toggle like tuit on click and force screen refresh
+                  // if likes count is greater than 0 then render solid heart colored red
+                  tuit.stats && tuit.stats.likes > 0 &&
                   <i className="fas fa-heart me-1" style={{color: 'red'}}></i>
               }
-              {
-                tuit.stats && tuit.stats.likes && tuit.stats.likes <= 0 &&
+              { // if likes count is less than or equal to 0, then render empty heart
+                  tuit.stats && tuit.stats.likes <= 0 &&
                   <i className="far fa-heart me-1"></i>
               }
             <span className="ttr-stats-likes">{tuit.stats && tuit.stats.likes}</span>
