@@ -117,14 +117,31 @@ const Profile = () => {
       // if user exists, then render this as the profile
       // after that, by default, this screen, renders "my tuits"
       // and if path is other things, render other things
-      <div>
+      <div className="container">
         <h4>{profile.username}</h4>
         <h6>@{profile.username}</h6>
         <button onClick={logout}>
           Logout</button>
+          <ul className="mt-4 nav nav-tabs ttr-font-size-150pc">
+              <li className="nav-item me-2">
+                <Link to="/profile/mytuits">
+                  Tuits</Link>
+              </li>
+              <li className="nav-item me-2">
+                  <Link to="/profile/tuits-and-replies">
+                      Tuits & replies</Link>
+              </li>
+              <li className="nav-item me-2">
+                  <Link to="/profile/media">
+                      Media</Link>
+              </li>
+              <li className="nav-item me-2">
+                  <Link to="/profile/mylikes">
+                      Likes</Link>
+              </li>
+          </ul>
 
-
-        <Routes>
+          <Routes>
           <Route path="/mytuits"
                  element={<MyTuits/>}/>
           <Route path="/tuits-and-replies"
