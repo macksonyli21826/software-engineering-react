@@ -1,7 +1,6 @@
-// seems like likeTuit(tuit) is not working because nothing happens except alert
 
 import React from "react";
-const TuitStats = ({tuit, likeTuit = () => {}}) => { // render stats row at bottom of tuit
+const TuitStats = ({tuit, likeTuit = () => {}}, dislikeTuit = () => {}) => { // render stats row at bottom of tuit
     return (
       <div className="row mt-2">
         <div className="col">
@@ -22,15 +21,30 @@ const TuitStats = ({tuit, likeTuit = () => {}}) => { // render stats row at bott
                   // callback toggle like tuit on click and force screen refresh
                   // if likes count is greater than 0 then render solid heart colored red
                   tuit.stats && tuit.stats.likes > 0 &&
-                  <i className="fas fa-heart me-1" style={{color: 'red'}}></i>
+                  <i className="fa-solid fa-thumbs-up me-1" ></i>
               }
               { // if likes count is less than or equal to 0, then render empty heart
                   tuit.stats && tuit.stats.likes <= 0 &&
-                  <i className="far fa-heart me-1"></i>
+                  <i className="fa-regular fa-thumbs-up me-1"></i>
               }
             <span className="ttr-stats-likes">{tuit.stats && tuit.stats.likes}</span>
           </span>
         </div>
+
+          <div className="col">
+            <span className="ttr-like-tuit-click" onClick={() => dislikeTuit(tuit)}>
+              {
+                  tuit.stats && tuit.stats.dislikes > 0 &&
+                  <i className="fa-solid fa-thumbs-down me-1"></i>
+              }
+                {
+                    tuit.stats && tuit.stats.dislikes <= 0 &&
+                    <i className="fa-solid fa-thumbs-down me-1"></i>
+                }
+                <span className="ttr-stats-likes">{tuit.stats && tuit.stats.dislikes}</span>
+            </span>
+          </div>
+
         <div className="col">
           <i className="far fa-inbox-out"></i>
         </div>
@@ -38,3 +52,7 @@ const TuitStats = ({tuit, likeTuit = () => {}}) => { // render stats row at bott
     );
 }
 export default TuitStats;
+
+
+
+
