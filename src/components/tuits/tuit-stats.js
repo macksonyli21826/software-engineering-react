@@ -30,17 +30,7 @@ const TuitStats = ({tuit, likeTuit = () => {}}, dislikeTuit = () => {}) => { // 
             <span className="ttr-stats-likes">{tuit.stats && tuit.stats.likes}</span>
           </span>
         </div>
-
-        <div className="col">
-          <i className="far fa-inbox-out"></i>
-        </div>
-      </div>
-    );
-}
-export default TuitStats;
-
-/*
-<div className="col">
+          <div className="col">
             <span className="ttr-like-tuit-click" onClick={() => dislikeTuit(tuit)}>
               {
                   tuit.stats && tuit.stats.dislikes > 0 &&
@@ -52,8 +42,12 @@ export default TuitStats;
                 }
                 <span className="ttr-stats-likes">{tuit.stats && tuit.stats.dislikes}</span>
             </span>
-</div>
+          </div>
 
- */
-
-
+        <div className="col">
+          <i className="far fa-inbox-out"></i>
+        </div>
+      </div>
+    );
+}
+export default TuitStats;

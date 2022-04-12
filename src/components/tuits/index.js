@@ -2,7 +2,7 @@ import React from "react";
 import './tuits.css';
 import Tuit from "./tuit";
 import * as likesService from "../../services/likes-service";
-//import * as dislikesService from "../../services/dislikes-service"
+import * as dislikesService from "../../services/dislikes-service"
 import * as service from "../../services/tuits-service";
 const Tuits = ({tuits = [], refreshTuits}) => { // render list of tuits,
     // callbacks to remove tuit and refresh screen
@@ -10,13 +10,13 @@ const Tuits = ({tuits = [], refreshTuits}) => { // render list of tuits,
         likesService.userLikesTuit("me", tuit._id)
             .then(refreshTuits)
             .catch(e => alert(e))
-    /*
+
     const dislikeTuit = (tuit) =>
         dislikesService.userDislikesTuit("me", tuit._id)
             .then(refreshTuits)
             .catch(e => alert(e))
 
-     */
+
 
     // code below is not in the instruction
     const deleteTuit = (tid) =>
@@ -32,7 +32,7 @@ const Tuits = ({tuits = [], refreshTuits}) => { // render list of tuits,
                         key={tuit._id}
                         deleteTuit={deleteTuit}
                         likeTuit={likeTuit}
-                        //dislikeTuit={dislikeTuit}
+                        dislikeTuit={dislikeTuit}
                         tuit={tuit}/>)
             }
           </ul>
