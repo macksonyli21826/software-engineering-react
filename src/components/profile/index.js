@@ -139,6 +139,10 @@ const Profile = () => {
                   <Link to="/profile/mylikes">
                       Likes</Link>
               </li>
+              <li className="nav-item me-2">
+                  <Link to="/profile/mydislikes">
+                      Dislikes</Link>
+              </li>
           </ul>
 
           <Routes>
@@ -150,6 +154,10 @@ const Profile = () => {
                  element={<Media/>}/>
           <Route path="/mylikes"
                  element={<MyLikes/>}/>
+
+              <Route path="/mydislikes"
+                     element={<MyDislikes/>}/>
+
         </Routes>
       </div>
   );
