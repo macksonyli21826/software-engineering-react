@@ -6,9 +6,10 @@ import Tuit from "./tuit";
 const TuitScreen = () => {
     const [tuit, setTuit] = useState({});
     const {tid} = useParams();
-    const findTuitById = () =>
+    const findTuitById = () => {
         service.findTuitById(tid)
             .then(tuit => setTuit(tuit));
+    };
     useEffect(findTuitById, []);
     return(
         <div>

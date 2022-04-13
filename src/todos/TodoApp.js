@@ -12,9 +12,11 @@ const TodoApp = () => {
   const [todos, setTodos] = useState([]);
   const [newTodoTitle, setNewTodoTitle] = useState("New Todo");
 
-  useEffect(async () => {
-    const todos = await service.findAllTodos();
-    setTodos(todos);
+  useEffect(() => {
+    (async () => {
+      const todos = await service.findAllTodos();
+      setTodos(todos);
+    })();
   }, []);
 
   const addTodo = async () => {
