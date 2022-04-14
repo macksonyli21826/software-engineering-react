@@ -2,6 +2,11 @@ import Tuits from "../tuits";
 import * as service from "../../services/dislikes-service";
 import {useEffect, useState} from "react";
 
+/**
+ * MyDislikes find all tuits that disliked by the logged in user and display it
+ * @returns {JSX.Element} The disliked tuits displayed
+ * @constructor construct the disliked tuits
+ */
 const MyDislikes = () => {
     const [dislikedTuits, setDislikedTuis] = useState([]);
     const findTuitsIDislike = () => {
