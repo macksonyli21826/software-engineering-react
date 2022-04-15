@@ -1,7 +1,7 @@
 import axios from "axios";
 
-//const BASE_URL = "https://cs5500-full-stack-2.herokuapp.com/api";
- const BASE_URL = "http://localhost:4000/api"; // runs with git branch a3-1.1
+const BASE_URL = "https://cs5500-full-stack-2.herokuapp.com/api";
+//const BASE_URL = "http://localhost:4000/api"; // runs with git branch a3-1.1
 
 const LOGIN_API = `${BASE_URL}/login`;
 const USERS_API = `${BASE_URL}/users`;

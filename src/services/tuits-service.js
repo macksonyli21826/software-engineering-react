@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:4000/api"; // works with branch a3-1.1
-// const BASE_URL = "https://cs5500-full-stack-2.herokuapp.com/";
+// const BASE_URL = "http://localhost:4000/api"; // works with branch a3-1.1
+const BASE_URL = "https://cs5500-full-stack-2.herokuapp.com/";
 
 const TUITS_API = `${BASE_URL}/tuits`;
 const USERS_API = `${BASE_URL}/users`;
